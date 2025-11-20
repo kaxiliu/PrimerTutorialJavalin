@@ -1,0 +1,18 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+  
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 2
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y maven default-jdk git
+    cd /vagrant
+    mvn clean package
+  SHELL
+
+  config.vm.network "forwarded_port", guest: 7000, host: 7000
+  config.vm.network "forwarded_port", guest: 7001, host: 7001
+end

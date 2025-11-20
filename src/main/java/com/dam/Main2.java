@@ -26,6 +26,8 @@ public class Main2 {
         app.get("/users/{id}", com.dam.Main2::obtenerUsuarioPorId);
         app.put("/users/{id}", com.dam.Main2::actualizarUsuario);
         app.delete("/users/{id}", com.dam.Main2::eliminarUsuario);
+
+        app.get("/version", ctx -> ctx.json(Map.of("version", "Soy el servidor 2")));
     }
     // --- Implementación de los Handlers (Controladores) ---
     /**

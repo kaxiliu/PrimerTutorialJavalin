@@ -28,6 +28,7 @@ public class Main {
         app.get("/users/{id}", Main::obtenerUsuarioPorId);
         app.put("/users/{id}", Main::actualizarUsuario);
         app.delete("/users/{id}", Main::eliminarUsuario);
+        app.get("/version", ctx -> ctx.json(Map.of("version", "Soy el servidor 1")));
     }
     // --- Implementación de los Handlers (Controladores) ---
     /**
